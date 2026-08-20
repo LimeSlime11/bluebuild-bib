@@ -17,7 +17,6 @@ modules:
         install:
           - org.mozilla.firefox
           - org.gnome.Loupe
-      - scope: user
 
   # 3. Secure cryptographical signing for your custom image
   - type: signing
