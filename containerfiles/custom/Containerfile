@@ -1,3 +1,7 @@
+ARG TARGETARCH
+
+RUN echo "TARGETARCH=${TARGETARCH:-UNSET}"
+
 FROM ghcr.io/blue-build/base-images/fedora-kinoite:latest
 
 USER root
