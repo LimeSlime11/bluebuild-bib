@@ -1,0 +1,36 @@
+FROM ghcr.io/blue-build/base-images/fedora-kinoite:latest
+
+USER root
+
+# Copy features into the build environment
+COPY features /tmp/features
+
+# Process feature scripts and system files
+RUN set -eux; \
+    \
+    # Run every feature script
+    find /tmp/features -type d -name scripts -print0 \
+        | sort -z \
+        | while IFS= read -r -d '' script_dir; do \
+            feature="$(basename "$(dirname "$script_dir")")"; \
+            echo "Processing scripts for: $feature"; \
+            \
+            find "$script_dir" -maxdepth 1 -type f -name '*.sh' -print0 \
+                | sort -z \
+                | while IFS= read -r -d '' script; do \
+                    echo "Running: $script"; \
+                    chmod +x "$script"; \
+                    "$script"; \
+                done; \
+        done; \
+    \
+    # Copy every system directory into /
+    find /tmp/features -type d -name system -print0 \
+        | sort -z \
+        | while IFS= read -r -d '' system_dir; do \
+            feature="$(basename "$(dirname "$system_dir")")"; \
+            echo "Installing system files for: $feature"; \
+            cp -a "$system_dir"/. /; \
+        done; \
+    \
+    rm -rf /tmp/features

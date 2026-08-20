@@ -5,9 +5,9 @@ base-image: ghcr.io/blue-build/base-images/fedora-kinoite
 image-version: latest
 
 modules:
-  # 1. Handoff to your root Containerfile for feature & package customization
   - type: containerfile
-    file: Containerfile
+    containerfiles:
+      - custom
 
   # 2. Automation for your system-wide flatpaks
   - type: default-flatpaks
