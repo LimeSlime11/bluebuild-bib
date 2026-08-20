@@ -1,0 +1,56 @@
+{
+  "policies": {
+    "DisablePrivateBrowsing": true,
+    "PrivateBrowsingModeAvailability": 1,
+
+    "DisableFirefoxAccounts": true,
+    "DisableAccounts": true,
+    "DisableProfileImport": true,
+    "DisableProfileRefresh": true,
+    "DisableSafeMode": true,
+    "DisableDeveloperTools": true,
+    "DisableFirefoxScreenshots": true,
+    "DisableFirefoxStudies": true,
+    "DisableTelemetry": true,
+
+    "DisableFormHistory": true,
+
+    "SanitizeOnShutdown": true,
+
+    "Homepage": {
+      "URL": "about:blank",
+      "Locked": true,
+      "StartPage": "homepage-locked"
+    },
+
+    "NewTabPage": false,
+
+    "DefaultBrowserSettingEnabled": false,
+    "DontCheckDefaultBrowser": true,
+
+    "PromptForDownloadLocation": false,
+
+    "Extensions": {
+      "Locked": []
+    },
+
+    "Preferences": {
+      "browser.shell.checkDefaultBrowser": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "browser.aboutConfig.showWarning": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "browser.sessionstore.resume_from_crash": {
+        "Value": false,
+        "Status": "locked"
+      },
+      "browser.sessionstore.max_resumed_crashes": {
+        "Value": 0,
+        "Status": "locked"
+      }
+    }
+  }
+}
